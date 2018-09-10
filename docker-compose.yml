@@ -1,0 +1,65 @@
+version: "2"
+
+services:
+  nginx:
+    build: ./images/nginx
+    env_file: docker_env.env
+    ports:
+        - 5000:80
+    links:
+        - node:node1
+        - node2:node2
+        - node3:node3
+    volumes_from:
+        - node
+        - node2
+        - node3
+
+  mongodb:
+    build: ./images/mongodb
+    env_file: docker_env.env
+    ports:
+        - 27017:27017
+    volumes:
+        - "./.data/db:/data/db"
+
+  redis:
+    build: ./images/redis
+    env_file: docker_env.env
+    ports:
+        - 6379:6379
+
+  node:
+    build: ./
+    command: nodemon --watch http server.js
+    env_file: docker_env.env
+    # ports:
+    #      - 5060:8080
+    links:
+        - mongodb
+        - redis
+    volumes:
+        - ./:/data/app_node
+
+  node2:
+    build: ./
+    command: nodemon --watch http server.js
+    env_file: docker_env.env
+    # ports:
+    #      - 5061:8080
+    links:
+        - mongodb
+        - redis
+    volumes:
+        - ./:/data/app_node
+  node3:
+    build: ./
+    command: nodemon --watch http server.js
+    env_file: docker_env.env
+    # ports:
+    #      - 5062:8080
+    links:
+        - mongodb
+        - redis
+    volumes:
+        - ./:/data/app_node/

@@ -1,0 +1,32 @@
+{
+  "name": "nginx-mongo-docker",
+  "version": "1.0.0",
+  "description": "test example of micro-service stack with node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:dushevadnqka/node-express-microservices-dockerised-boilerplate.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "express",
+    "mongo",
+    "docker",
+    "nginx",
+    "cluster"
+  ],
+  "author": "Georgi Sashov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgi-sashov/node-nginx-mongo-docker/issues"
+  },
+  "homepage": "https://github.com/georgi-sashov/node-nginx-mongo-docker#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.13"
+  }
+}
